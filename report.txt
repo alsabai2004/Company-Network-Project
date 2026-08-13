@@ -1,0 +1,196 @@
+﻿Computer Networks
+
+Mohammed Najeeb Al-Sabai 
+Company Network Project in Cisco Packet Tracer
+
+
+1. Description and Requirements
+Apple Inc. has hired you to set up a LAN for their new headquarters in Krakow. The following
+are the requirements for the Network you will establish in the new building.
+1. Use Cisco Packet Tracer to implement solution.
+2. The network address that the company allocated is 192.168.1.0/20
+3. Various departments work on each floor of the 4-storey building. Each of these
+departments will have different VLANs and different subnetworks.
+4. On the third floor, there will be a wireless access point to which a maximum of 1000
+devices can be connected. The details of the floors and departments are given below.
+1. floor:
+Administration and HR:
+Sales and marketing:
+
+90 devices needed
+200 devices needed
+
+2. floor:
+Finance:
+Public Relations:
+
+80 devices needed
+100 devices needed
+
+3. floor:
+IT and Communications:
+Access Point:
+
+200 devices needed
+Maximum 1000 device should connect
+
+4. floor:
+Server Room:
+
+20 devices needed
+
+5. There should be a core router connected to the ISP, and two multilayer switches
+connected to this core router.
+Network address between Core Router and ISP:
+Network address between Multilayer S1 and Core Router:
+Network address between Multilayer S2 - Core Router:
+
+193.168.16.0/30
+192.168.19.164/30
+192.168.19.168/30
+
+6. Devices in all departments are required to communicate with each other with the respective
+multilayer switch configured for inter-VLAN routing.
+7. The multilayer switches are expected to carry out both routing and switching.
+8. All devices in the network are expected to obtain an IP address dynamically from the DHCP
+server located at server room.
+9. Devices in the server room are to be allocated IP addresses statically.
+10. Use OSPF as the routing protocol to advertise routes between routers and multilayer switches.
+11. Configure NAT on core router.
+
+
+2. Subnetting
+Base Network: 192.168.16.0/20
+11000000.10101000.00010000.00000000 / 11111111.11111111.1111 0000.00000000
+Administration and HR Department
+Network: 192.168.16.0/25
+Broadcast: 192.168.16.127
+Devices Needed: 90
+Allocated IP addresses for Hosts: 126
+Finance Department
+Network: 192.168.16.128/25
+Broadcast: 192.168.16.255
+Devices Needed: 90
+Allocated IP addresses for Hosts: 126
+Sales and Marketing Department
+Network: 192.168.17.0/24
+Broadcast: 192.168.17.255
+Devices Needed: 200
+Allocated IP Addresses for Hosts: 254
+IT and Communications Department
+Network: 192.168.18.0/24
+Broadcast: 192.168.18.255
+Devices Needed: 200
+Allocated IP Addresses for Hosts: 254
+Public Relations Department
+Network: 192.168.19.0/25
+Broadcast: 192.168.19.127
+Devices Needed: 90
+Allocated IP Addresses for Hosts: 126
+Server Room
+Network: 192.168.19.128/27
+Broadcast: 192.168.19.159
+Devices Needed: 20
+Allocated IP Addresses for Hosts: 30
+Wireless Network Information
+Network: 192.168.20.0/22
+Broadcast: 192.168.23.255
+Devices Needed: 1000
+Allocated IP Addresses for Hosts: 1022
+
+
+3. Topology
+
+•
+•
+•
+•
+•
+•
+
+OSPF used as routing protocol on the routers and multi-layer switches.
+NAT configured on core router.
+Multi-layer switches configured for inter-VLAN routing.
+Ports between multi-layer switches and 2960 model switches configured as trunk ports.
+Ports between 2960 model switches and end-devices configured as access ports.
+Access Point has a password on WPA2-PSK Authentication. Since smart phone in public
+relations department doesn’t have correct password, it’s not connected to the wireless network.
+
+
+4. Screenshots of Configurations
+4.1.
+
+ISP Router
+
+Figure 1: Statically typed IP addresses of Serial interfaces and OSPF configuration
+
+
+4.2.
+
+Core Router
+
+Figure 2: Statically typed IP addresses
+
+Figure 3: OSPF and NAT configuration
+
+
+4.3.
+
+Multi-Layer Switches
+
+Figure 4: Statically typed IP on Gig1/0/1 and trunk interfaces
+
+Figure 5: inter-VLAN routing and IP DHCP helper-addresses
+
+
+Figure 6: OSPF configuration
+
+•
+
+Multi-layer S2 has similar configuration as Multilayer S1
+
+
+4.4.
+
+Layer 2 Switches
+
+Figure 7: Access and trunk ports
+
+4.5.
+
+DHCP Server
+
+Figure 8: Pools of DHCP server
+
+
+5. Testing
+5.1.
+
+Testing DHCP
+
+Figure 9: As soon as packet tracer opened all devices get IP addresses from DHCP server
+
+5.2.
+
+Ping Testing
+
+Figure 10: First ping is from finance dep. to IT dept.
+Second ping is from finance dept. to the DHCP server
+
+
+5.3.
+
+Testing NAT
+
+Figure 11: NAT translation in core router
+
+5.4.
+
+Testing DNS
+
+Figure 12: Searching www.test.com on a PC
+
+Figure 13: Our query goes to the DNS server to get an IP address for specified domain
+
+
+
