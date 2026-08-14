@@ -74,7 +74,7 @@ An enterprise company has hired you to set up a LAN for their new headquarters i
 
 ## Author
 
-**Adar Sönmez**  
+**Eng\ Mohammed Najeeb Al-Sabai**  
 [GitHub Profile](https://github.com/alsabai2004)
 
 
